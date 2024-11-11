@@ -59,3 +59,35 @@ function playRound(humanChoice, computerChoice) {
 
   return status;
 }
+
+/**
+ * @param {number} rounds
+ */
+function playGame(rounds) {
+  for (let i = 1; i <= rounds; ++i) {
+    console.log(`Round ${i}:`);
+    const humanChoice = getHumanChoice();
+    const computerChoice = getComputerChoice();
+    const outcome = playRound(humanChoice, computerChoice);
+
+    if (outcome === 1) {
+      ++humanScore;
+    }
+    else if (outcome === -1) {
+      ++computerScore;
+    }
+  }
+
+  console.log(`The ${rounds} rounds are done. The score is ${humanScore}-${computerScore}`);
+  if (humanScore > computerScore) {
+    console.log("You win!");
+  }
+  else if (humanScore < computerScore) {
+    console.log("You lose!");
+  }
+  else {
+    console.log("It's a tie!");
+  }
+}
+
+playGame(5);
