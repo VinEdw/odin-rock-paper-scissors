@@ -26,3 +26,8 @@ function getHumanChoice() {
     return choices[choiceIdx];
   }
 }
+
+function modulo(n, d) {
+  return ((n % d) + d) % d;
+}
+
