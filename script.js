@@ -31,3 +31,31 @@ function modulo(n, d) {
   return ((n % d) + d) % d;
 }
 
+/**
+ * @param {string} humanChoice 
+ * @param {string} computerChoice
+ * @returns {number}
+ */
+function playRound(humanChoice, computerChoice) {
+  const humanChoiceIdx = choices.indexOf(humanChoice.toLowerCase());
+  const computerChoiceIdx = choices.indexOf(computerChoice.toLowerCase());
+
+  const idxDifference = modulo(computerChoiceIdx - humanChoiceIdx, choices.length);
+  const threshold = Math.floor(choices.length / 2);
+
+  let status;
+  if (idxDifference === 0) {
+    console.log(`It's a tie! (${humanChoice} matches ${computerChoice})`);
+    status = 0;
+  }
+  else if (idxDifference > threshold) {
+    console.log(`You win! (${humanChoice} beats ${computerChoice})`);
+    status = 1;
+  }
+  else {
+    console.log(`You lose! (${humanChoice} is no match for ${computerChoice})`);
+    status = -1;
+  }
+
+  return status;
+}
