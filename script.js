@@ -35,15 +35,15 @@ function playRound(humanChoice, computerChoice) {
 
   let status;
   if (idxDifference === 0) {
-    console.log(`It's a tie! (${humanChoice} matches ${computerChoice})`);
+    writeMessage(`- It's a tie! (${humanChoice} matches ${computerChoice})`);
     status = 0;
   }
   else if (idxDifference > threshold) {
-    console.log(`You win! (${humanChoice} beats ${computerChoice})`);
+    writeMessage(`- You win! (${humanChoice} beats ${computerChoice})`);
     status = 1;
   }
   else {
-    console.log(`You lose! (${humanChoice} is no match for ${computerChoice})`);
+    writeMessage(`- You lose! (${humanChoice} is no match for ${computerChoice})`);
     status = -1;
   }
 
