@@ -1,4 +1,5 @@
 const choices = ["rock", "paper", "scissors"];
+const winningScore = 5;
 let humanScore = 0;
 let computerScore = 0;
 
