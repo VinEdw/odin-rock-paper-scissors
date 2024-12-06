@@ -4,6 +4,14 @@ let humanScore = 0;
 let computerScore = 0;
 let currentRound = 1;
 
+function writeMessage(message) {
+  const messageElement = document.querySelector("#messages");
+  if (messageElement.textContent) {
+    messageElement.textContent += "\n";
+  }
+  messageElement.textContent += message;
+}
+
 function getComputerChoice() {
   const choiceIdx = Math.floor(Math.random() * choices.length);
   return choices[choiceIdx];
