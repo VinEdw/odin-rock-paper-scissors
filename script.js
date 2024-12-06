@@ -2,6 +2,7 @@ const choices = ["rock", "paper", "scissors"];
 const winningScore = 5;
 let humanScore = 0;
 let computerScore = 0;
+let currentRound = 1;
 
 function getComputerChoice() {
   const choiceIdx = Math.floor(Math.random() * choices.length);
