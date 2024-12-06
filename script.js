@@ -82,4 +82,23 @@ function playGame(humanChoice) {
   }
 }
 
-playGame(5);
+/**
+ * @param {PointerEvent} e
+ */
+function humanChoiceButtonHandler(e) {
+  const button = e.target;
+  const choice = button.value;
+  playGame(choice);
+}
+
+function addHumanChoiceEventListeners() {
+  const buttons = document.querySelectorAll("#choices button");
+  buttons.forEach(button => button.addEventListener("click", humanChoiceButtonHandler));
+}
+
+function removeHumanChoiceEventListeners() {
+  const buttons = document.querySelectorAll("#choices button");
+  buttons.forEach(button => button.removeEventListener("click", humanChoiceButtonHandler));
+}
+
+addHumanChoiceEventListeners();
