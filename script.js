@@ -51,32 +51,34 @@ function playRound(humanChoice, computerChoice) {
 }
 
 /**
- * @param {number} rounds
+ * @param {string} humanChoice 
  */
-function playGame(rounds) {
-  for (let i = 1; i <= rounds; ++i) {
-    console.log(`Round ${i}:`);
-    const humanChoice = getHumanChoice();
-    const computerChoice = getComputerChoice();
-    const outcome = playRound(humanChoice, computerChoice);
+function playGame(humanChoice) {
+  const computerChoice = getComputerChoice();
+  const outcome = playRound(humanChoice, computerChoice);
 
-    if (outcome === 1) {
-      ++humanScore;
-    }
-    else if (outcome === -1) {
-      ++computerScore;
-    }
+  if (outcome === 1) {
+    ++humanScore;
+  }
+  else if (outcome === -1) {
+    ++computerScore;
   }
 
-  console.log(`The ${rounds} rounds are done. The score is ${humanScore}-${computerScore}`);
-  if (humanScore > computerScore) {
-    console.log("You win!");
+  ++currentRound;
+  const scoreString = `(${humanScore}-${computerScore})`;
+
+  if (humanScore >= winningScore) {
+    writeMessage("====================");
+    writeMessage(`You win! ${scoreString}`);
+    removeHumanChoiceEventListeners();
   }
-  else if (humanScore < computerScore) {
-    console.log("You lose!");
+  else if (computerScore >= winningScore) {
+    writeMessage("====================");
+    writeMessage(`You lose! ${scoreString}`);
+    removeHumanChoiceEventListeners();
   }
   else {
-    console.log("It's a tie!");
+    writeMessage(`Round ${currentRound} ${scoreString}:`);
   }
 }
 
